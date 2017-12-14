@@ -1,0 +1,2699 @@
+{
+    "mappings": {
+        "vds_alert": {
+            "properties": {
+				"TimeAppend": {
+					"type": "date",
+					"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis",
+					"copy_to": "MyXdr"
+				},				
+				"Type": {
+                    "type": "keyword",
+                    "copy_to": "MyAlert"
+                },	
+                "Local_extent": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "SeverityAppend": {
+                    "type": "keyword",
+                    "copy_to": "MyAlert"
+                },
+                "Local_vname": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Attack": {
+                    "type": "keyword",
+                    "copy_to": "MyAlert"
+                },
+                "Local_platfrom": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Local_vtype": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Local_threatname": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Subfile": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Threatname": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Local_enginetype": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Local_logtype": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Local_engineip": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "MyAlert": {
+                    "type": "text"
+                },
+                "Xdr": {
+                    "type": "nested",
+                    "properties": {
+                        "Vendor": {
+                            "type": "text",
+                            "copy_to": "MyXdr"
+                        },
+                        "Ipv4": {
+                            "type": "boolean",
+                            "copy_to": "MyXdr"
+                        },
+                        "Class": {
+                            "type": "integer",
+                            "copy_to": "MyXdr"
+                        },
+                        "Type": {
+                            "type": "integer",
+                            "copy_to": "MyXdr"
+                        },
+                        "TimeAppend": {
+                            "type": "date",
+							"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis",
+                            "copy_to": "MyXdr"
+                        },
+                        "Conn": {
+                            "properties": {
+                                "Proto": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ProtoAppend": {
+                                    "type": "keyword",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Sport": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Dport": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Sip": {
+                                    "type": "ip",
+                                    "copy_to": "MyXdr"
+                                },
+								"SipInfo": {
+									"properties": {
+										"Country": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"City": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+									
+								},
+                                "Dip": {
+                                    "type": "ip",
+                                    "copy_to": "MyXdr"
+                                },
+								"DipInfo": {
+									"properties": {
+										"Country": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},										
+										"City": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+								}
+                            }
+                        },
+                        "ConnEx": {
+                            "properties": {
+                                "Over": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Dir": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "ConnSt": {
+                            "properties": {
+                                "FlowUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FlowDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpFragUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpFragDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "ConnTime": {
+                            "properties": {
+                                "Start": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                },
+                                "End": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "ServSt": {
+                            "properties": {
+                                "FlowUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FlowDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpFragUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpFragDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TcpDisorderUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TcpDisorderDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TcpRetranUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TcpRetranDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Tcp": {
+                            "properties": {
+                                "DisorderUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "DisorderDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RetranUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RetranDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SynAckDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AckDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ReportFlag": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CloseReason": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FirstRequestDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FirstResponseDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Window": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Mss": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SynCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SynAckCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AckCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SessionOK": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Handshake12": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Handshake23": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Open": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Close": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Http": {
+                            "properties": {
+                                "Host": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+								"IpInfo": {
+									"properties": {
+										"Country": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+								},
+                                "Url": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "XonlineHost": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "UserAgent": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ContentType": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Refer": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Cookie": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Location": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Request": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RequestLocation": {
+                                    "properties": {
+                                        "File": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Offset": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Size": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Signature": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        }
+                                    }
+                                },
+                                "Response": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ResponseLocation": {
+                                    "properties": {
+                                        "File": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Offset": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Size": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Signature": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        }
+                                    }
+                                },
+                                "RequestTime": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FirstResponseTime": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                },
+                                "LastContentTime": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServTime": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ContentLen": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "StateCode": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Method": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Version": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "HeadFlag": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServFlag": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RequestFlag": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Browser": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Portal": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Sip": {
+                            "properties": {
+                                "CallingNo": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CalledNo": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SessionId": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CallDir": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CallType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "HangupReason": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SignalType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "StreamCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Malloc": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Bye": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Rtsp": {
+                            "properties": {
+                                "Uri": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "UserAgent": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServerIp": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ClientBeginPort": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ClientEndPort": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServerBeginPort": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServerEndPort": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "VideoStreamCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AudeoStreamCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ResDelay": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Ftp": {
+                            "properties": {
+                                "State": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "UserCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CurrentDir": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TransMode": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TransType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FileCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FileSize": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspTm": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TransTm": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Mail": {
+                            "properties": {
+                                "MsgType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspState": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "UserName": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RecverInfo": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Len": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "DomainInfo": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RecvAccount": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Hdr": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AcsType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Dns": {
+                            "properties": {
+                                "Domain": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpVersion": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Ip": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+								"IpInfo": {
+									"properties": {
+										"Country": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+								},								
+                                "Ips": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspCode": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ReqCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspRecordCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AuthCnttCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ExtraRecordCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktValid": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Vpn": {
+                            "properties": {
+                                "Type": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Proxy": {
+                            "properties": {
+                                "Type": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "QQ": {
+                            "properties": {
+                                "Number": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "App": {
+                            "properties": {
+                                "ProtoInfo": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Status": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ClassId": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Proto": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "File": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FileLocation": {
+                                    "type": "object",
+                                    "properties": {
+                                        "File": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Offset": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Size": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Signature": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Ssl": {
+                            "properties": {
+                                "FailReason": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Server": {
+                                    "properties": {
+                                        "Verfy": {
+                                            "type": "boolean",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "VerfyFailedDesc": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "VerfyFailedIdx": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Cert": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Version": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "SerialNumber": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotBefore": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotAfter": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "KeyUsage": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CountryName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationUnitName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CommonName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "FileLocation": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "DbName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "TableName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "Signature": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "Certs": {
+                                            "type": "nested",
+                                            "properties": {
+                                                "Version": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "SerialNumber": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotBefore": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotAfter": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "KeyUsage": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CountryName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationUnitName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CommonName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "FileLocation": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "DbName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "TableName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "Signature": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "Client": {
+                                    "properties": {
+                                        "Verfy": {
+                                            "type": "boolean",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "VerfyFailedDesc": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "VerfyFailedIdx": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Cert": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Version": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "SerialNumber": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotBefore": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotAfter": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "KeyUsage": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CountryName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationUnitName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CommonName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "FileLocation": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "DbName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "TableName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "Signature": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "Certs": {
+                                            "type": "nested",
+                                            "properties": {
+                                                "Version": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "SerialNumber": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotBefore": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotAfter": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "KeyUsage": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CountryName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationUnitName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CommonName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "FileLocation": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "DbName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "TableName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "Signature": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "MyXdr": {
+                    "type": "text"
+                }
+            }
+        },		
+        "waf_alert": {
+            "properties": {
+				"TimeAppend": {
+					"type": "date",
+					"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis",
+					"copy_to": "MyXdr"
+				},				
+                "Type": {
+                    "type": "keyword",
+                    "copy_to": "MyAlert"
+                },				
+                "Version": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+				"Rule": {
+					"properties": {
+						"Ver": {
+		                    "type": "text",
+		                    "copy_to": "MyAlert"
+		                },
+						"Data": {
+		                   "type": "text",
+		                   "copy_to": "MyAlert"
+		               	},
+		                "Line": {
+		                    "type": "integer",
+		                    "copy_to": "MyAlert"
+		                },
+		                "Id": {
+		                    "type": "integer",
+		                    "copy_to": "MyAlert"
+		                },
+		                "File": {
+		                    "type": "text",
+		                    "copy_to": "MyAlert"
+		                }										
+					}
+				},
+                "Accuracy": {
+                    "type": "integer",
+                    "copy_to": "MyAlert"
+                },
+                "Maturity": {
+                    "type": "integer",
+                    "copy_to": "MyAlert"
+                },
+                "Severity": {
+                    "type": "integer",
+                    "copy_to": "MyAlert"
+                },
+                "SeverityAppend": {
+                    "type": "keyword",
+                    "copy_to": "MyAlert"
+                },
+                "Attack": {
+                    "type": "keyword",
+                    "copy_to": "MyAlert"
+                },
+                "Msg": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Rev": {
+                    "type": "integer",
+                    "copy_to": "MyAlert"
+                },
+                "Client": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Hostname": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Uri": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Unique_id": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Ref": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "Tags": {
+                    "type": "text",
+                    "copy_to": "MyAlert"
+                },
+                "MyAlert": {
+                    "type": "text"
+                },
+                "Xdr": {
+                    "type": "nested",
+                    "properties": {
+                        "Vendor": {
+                            "type": "text",
+                            "copy_to": "MyXdr"
+                        },
+                        "Ipv4": {
+                            "type": "boolean",
+                            "copy_to": "MyXdr"
+                        },
+                        "Class": {
+                            "type": "integer",
+                            "copy_to": "MyXdr"
+                        },
+                        "Type": {
+                            "type": "integer",
+                            "copy_to": "MyXdr"
+                        },
+                        "TimeAppend": {
+                            "type": "date",
+							"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis",
+                            "copy_to": "MyXdr"
+                        },
+                        "Conn": {
+                            "properties": {
+                                "Proto": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ProtoAppend": {
+                                    "type": "keyword",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Sport": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Dport": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Sip": {
+                                    "type": "ip",
+                                    "copy_to": "MyXdr"
+                                },
+								"SipInfo": {
+									"properties": {
+										"Country": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"City": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+									
+								},
+                                "Dip": {
+                                    "type": "ip",
+                                    "copy_to": "MyXdr"
+                                },
+								"DipInfo": {
+									"properties": {
+										"Country": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"City": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+								}
+                            }
+                        },
+                        "ConnEx": {
+                            "properties": {
+                                "Over": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Dir": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "ConnSt": {
+                            "properties": {
+                                "FlowUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FlowDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpFragUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpFragDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "ConnTime": {
+                            "properties": {
+                                "Start": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                },
+                                "End": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "ServSt": {
+                            "properties": {
+                                "FlowUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FlowDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpFragUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpFragDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TcpDisorderUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TcpDisorderDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TcpRetranUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TcpRetranDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Tcp": {
+                            "properties": {
+                                "DisorderUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "DisorderDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RetranUp": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RetranDown": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SynAckDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AckDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ReportFlag": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CloseReason": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FirstRequestDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FirstResponseDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Window": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Mss": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SynCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SynAckCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AckCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SessionOK": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Handshake12": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Handshake23": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Open": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Close": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Http": {
+                            "properties": {
+                                "Host": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+								"IpInfo": {
+									"properties": {
+										"Country": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+								},
+                                "Url": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "XonlineHost": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "UserAgent": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ContentType": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Refer": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Cookie": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Location": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Request": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RequestLocation": {
+                                    "properties": {
+                                        "File": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Offset": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Size": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Signature": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        }
+                                    }
+                                },
+                                "Response": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ResponseLocation": {
+                                    "properties": {
+                                        "File": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Offset": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Size": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Signature": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        }
+                                    }
+                                },
+                                "RequestTime": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FirstResponseTime": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                },
+                                "LastContentTime": {
+                                    "type": "long",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServTime": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ContentLen": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "StateCode": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Method": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Version": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "HeadFlag": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServFlag": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RequestFlag": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Browser": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Portal": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Sip": {
+                            "properties": {
+                                "CallingNo": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CalledNo": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SessionId": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CallDir": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CallType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "HangupReason": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "SignalType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "StreamCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Malloc": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Bye": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Rtsp": {
+                            "properties": {
+                                "Uri": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "UserAgent": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServerIp": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ClientBeginPort": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ClientEndPort": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServerBeginPort": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ServerEndPort": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "VideoStreamCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AudeoStreamCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ResDelay": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Ftp": {
+                            "properties": {
+                                "State": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "UserCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "CurrentDir": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TransMode": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TransType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FileCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FileSize": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspTm": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "TransTm": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Mail": {
+                            "properties": {
+                                "MsgType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspState": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "UserName": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RecverInfo": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Len": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "DomainInfo": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RecvAccount": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Hdr": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AcsType": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Dns": {
+                            "properties": {
+                                "Domain": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "IpVersion": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Ip": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+								"IpInfo": {
+									"properties": {
+										"Country": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+								},								
+                                "Ips": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspCode": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ReqCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspRecordCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "AuthCnttCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ExtraRecordCount": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "RspDelay": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "PktValid": {
+                                    "type": "boolean",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Vpn": {
+                            "properties": {
+                                "Type": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "Proxy": {
+                            "properties": {
+                                "Type": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "QQ": {
+                            "properties": {
+                                "Number": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                }
+                            }
+                        },
+                        "App": {
+                            "properties": {
+                                "ProtoInfo": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Status": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "ClassId": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Proto": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "File": {
+                                    "type": "text",
+                                    "copy_to": "MyXdr"
+                                },
+                                "FileLocation": {
+                                    "type": "object",
+                                    "properties": {
+                                        "File": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Offset": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Size": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Signature": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Ssl": {
+                            "properties": {
+                                "FailReason": {
+                                    "type": "integer",
+                                    "copy_to": "MyXdr"
+                                },
+                                "Server": {
+                                    "properties": {
+                                        "Verfy": {
+                                            "type": "boolean",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "VerfyFailedDesc": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "VerfyFailedIdx": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Cert": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Version": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "SerialNumber": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotBefore": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotAfter": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "KeyUsage": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CountryName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationUnitName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CommonName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "FileLocation": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "DbName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "TableName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "Signature": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "Certs": {
+                                            "type": "nested",
+                                            "properties": {
+                                                "Version": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "SerialNumber": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotBefore": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotAfter": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "KeyUsage": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CountryName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationUnitName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CommonName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "FileLocation": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "DbName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "TableName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "Signature": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "Client": {
+                                    "properties": {
+                                        "Verfy": {
+                                            "type": "boolean",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "VerfyFailedDesc": {
+                                            "type": "text",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "VerfyFailedIdx": {
+                                            "type": "integer",
+                                            "copy_to": "MyXdr"
+                                        },
+                                        "Cert": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Version": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "SerialNumber": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotBefore": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotAfter": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "KeyUsage": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CountryName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationUnitName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CommonName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "FileLocation": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "DbName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "TableName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "Signature": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "Certs": {
+                                            "type": "nested",
+                                            "properties": {
+                                                "Version": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "SerialNumber": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotBefore": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "NotAfter": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "KeyUsage": {
+                                                    "type": "integer",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CountryName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "OrganizationUnitName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "CommonName": {
+                                                    "type": "text",
+                                                    "copy_to": "MyXdr"
+                                                },
+                                                "FileLocation": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "DbName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "TableName": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        },
+                                                        "Signature": {
+                                                            "type": "text",
+                                                            "copy_to": "MyXdr"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "MyXdr": {
+                    "type": "text"
+                }                
+            }
+        },
+		"ids_alert": {
+			"properties": {
+				"Xdr": {
+					"type": "nested",
+					"properties": {						
+						"TimeAppend": {
+							"type": "date",
+							"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis",
+							"copy_to": "MyXdr"
+						},
+						"Conn": {
+							"properties": {
+								"Sip": {
+									"type": "ip",
+									"copy_to": "MyXdr"
+								},
+								"SipInfo": {
+									"properties": {
+										"Country": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"City": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+								},								
+								"SPort": {
+									"type": "integer",
+									"copy_to": "MyXdr"
+								},
+								"Dip": {
+									"type": "ip",
+									"copy_to": "MyXdr"
+								},
+								"DipInfo": {
+									"properties": {
+										"Country": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Province": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"City": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Organization": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Network": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"Lng": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"Lat": {
+											"type": "keyword",
+											"null_value": "",
+											"copy_to": "MyXdr"
+										},									
+										"TimeZone": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"UTC": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"RegionalismCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"PhoneCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"CountryCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},									
+										"ContinentCode": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										}
+									}
+								},
+								"DPort": {
+									"type": "integer",
+									"copy_to": "MyXdr"
+								},				
+								"Proto": {
+									"type": "integer",
+									"copy_to": "MyXdr"
+								},				
+								"ProtoAppend": {
+									"type": "keyword",
+									"copy_to": "MyXdr"
+								}							
+							}
+						}						
+					}
+				},
+				"TimeAppend": {
+					"type": "date",
+					"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis",
+					"copy_to": "MyXdr"
+				},				
+                "Type": {
+                    "type": "keyword",
+                    "copy_to": "MyAlert"
+                },					
+				"Attack": {
+					"type": "keyword",
+					"copy_to": "MyAlert"
+				},
+				"Byzoro_type": {
+					"type": "text",
+					"copy_to": "MyAlert"
+				},
+				"Attack_type": {
+					"type": "text",
+					"copy_to": "MyAlert"
+				},
+				"Details": {
+					"type": "text",
+					"copy_to": "MyAlert"
+				},	
+				"Severity": {
+					"type": "integer",
+					"copy_to": "MyAlert"
+				},		
+				"SeverityAppend": {
+					"type": "keyword",
+					"copy_to": "MyAlert"
+				},	
+				"Engine": {
+					"type": "text",
+					"copy_to": "MyAlert"
+				},
+				"MyAlert": {
+					"type": "text"
+				},
+				"MyXdr": {
+                    "type": "text"
+                } 																		
+			}
+		}
+
+    }
+}
+
+
+
+
+

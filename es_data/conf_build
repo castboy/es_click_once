@@ -1,0 +1,24 @@
+#!/bin/bash
+
+conf=conf.ini
+
+vds-partitions=
+ids-partitions=
+waf-partitions=
+kafka-brokers=
+es-nodes=
+es-port=
+
+sed -i "1i [topic] \
+vds-alert = $vds-partitions \
+waf-alert = $waf-partitions \
+ids-alert = $ids-partitions \
+\
+[kafka] \
+brokers = $kafka-brokers \
+start = \
+\
+[elasticsearch]
+nodes = $es-nodes \
+port = $es-port" conf
+
