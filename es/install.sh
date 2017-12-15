@@ -117,9 +117,9 @@ function java8_guide(){
 function log() {
 	if [ -z $2 ]
 	then
-		echo $(date "+%G-%m-%d %H:%M:%S")": INF   detail: $1" >> $LOG_FILE
+		echo $(date "+%G-%m-%d %H:%M:%S")": INF   detail: $1" >> $INSTALL_LOG
 	else
-		echo $(date "+%G-%m-%d %H:%M:%S")": CRT   detail: $1" >> $LOG_FILE
+		echo $(date "+%G-%m-%d %H:%M:%S")": CRT   detail: $1" >> $INSTALL_LOG
 		exit 1
 	fi
 }
