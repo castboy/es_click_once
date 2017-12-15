@@ -1,6 +1,6 @@
 #!/bin/bash
 
-func log_file() {
+function log_file() {
 	INSTALL_LOG="$(pwd)/install-$(date "+%G-%m-%d_%H:%M:%S").log"
 	touch $INSTALL_LOG
 }
@@ -15,7 +15,7 @@ function init_vars() {
 }
 
 function mv_install_pkg() {
-	if [ "" != $(ls $APT_HOME/package | sed -n '/es/p') ]
+	if [ "" != "$(ls $APT_HOME/package | sed -n '/es/p')" ]
 	then
 		rm $ES_PKG -rf
 		log "rm es_pkg in dest dir"
@@ -30,7 +30,7 @@ function mv_install_pkg() {
 }
 
 function insure_java8() {
-	if [ "8" != $(javac -version 2>&1 | awk '{print $2}' | awk -F '.' '{print $2}') ]
+	if [ "8" != "$(java -version 2>&1 | awk '{print $2}' | awk -F '.' '{print $2}')" ]
 	then	
 		put_java8_in
 		java8_guide $ES_BIN
@@ -38,7 +38,7 @@ function insure_java8() {
 }
 
 function add_user_es() {
-	if [ -z $(cat /etc/passwd | sed -n '/^es.*\/home\/es/p') ]
+	if [ -z "$(cat /etc/passwd | sed -n '/^es.*\/home\/es/p')" ]
 	then
 		useradd -d /home/es -m es
 		echo "es.123" | passwd --stdin es
@@ -112,7 +112,7 @@ function put_java8_in(){
 }
 
 function java8_guide(){
-	if ["" = $(cat $1 | sed -n '/JAVA_HOME/p')]
+	if [ -z "$(cat $1 | sed -n '/JAVA_HOME/p')" ]
 	then
 		sed -i '1i export JAVA_HOME=/opt/tool/jdk\
                    export PATH=$JAVA_HOME/bin:$PATH\
