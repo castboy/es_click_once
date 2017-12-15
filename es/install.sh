@@ -57,7 +57,7 @@ function es_config_file() {
 function max_num_of_threads() {
 	if [ -z "$(cat /etc/security/limits.conf | sed -n '/es soft nproc 4096/p')" ]
 	then
-		sed -i '$a es soft nproc 4096 \
+		sed -i '$a es soft nproc 4096\
 		es hard nproc 4096' /etc/security/limits.conf
 		sed -i 's/^[" "]*//' /etc/security/limits.conf
 		log "set max number of threads"
@@ -80,7 +80,7 @@ function max_virtu_mem() {
 function max_file_descs() {
 	if [ -z "$(nl /etc/security/limits.conf | sed -n '/es hard nofile 65536/p')" ]
 	then
-		sed -i '$a es hard nofile 65536 \
+		sed -i '$a es hard nofile 65536\
 		es soft nofile 65536' /etc/security/limits.conf
 		sed -i 's/^[" "]*//' /etc/security/limits.conf
 		log "set max file descriptors"
@@ -93,7 +93,7 @@ function max_file_descs() {
 function mem_lock() {
 	if [ -z "$(nl /etc/security/limits.conf | sed -n '/es soft memlock unlimited/p')" ]
 	then
-		sed -i '$a es soft memlock unlimited \ 
+		sed -i '$a es soft memlock unlimited\ 
 		es hard memlock unlimited' /etc/security/limits.conf
 		sed -i 's/^[" "]*//' /etc/security/limits.conf
 		log "set memory locking"
@@ -110,9 +110,9 @@ function put_java8_in(){
 function java8_guide(){
 	if ["" = $(cat $1 | sed -n '/JAVA_HOME/p')]
 	then
-		sed -i '1i export JAVA_HOME=/opt/tool/jdk \
-		export PATH=$JAVA_HOME/bin:$PATH \
-		export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar \
+		sed -i '1i export JAVA_HOME=/opt/tool/jdk\
+		export PATH=$JAVA_HOME/bin:$PATH\
+		export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar\
 		export JRE_HOME=$JAVA_HOME/jre' $1
 		sed -i 's/^[" "]*//' $1
 		log "set java8_guide for es"
