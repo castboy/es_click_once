@@ -1,5 +1,10 @@
 #!/bin/bash
 
+func log_file() {
+	INSTALL_LOG="$(pwd)/install-$(date "+%G-%m-%d_%H:%M:%S").log"
+	touch $INSTALL_LOG
+}
+
 function init_vars() {
 	APT_HOME=$(env_var "${APT_HOME}" "get env_var APT_HOME")
 	ES_PKG=$APT_HOME/package/es
@@ -143,9 +148,8 @@ function env_var() {
 
 
 
-INSTALL_LOG="$(pwd)/install.log"
-touch $INSTALL_LOG
 
+log_file
 init_vars
 mv_install_pkg
 insure_java8
