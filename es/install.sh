@@ -14,7 +14,7 @@ function mv_install_pkg() {
 	if [ "" != $(ls $ES_PKG | sed -n '/es/p') ]
 	then
 		rm $ES_PKG -rf
-		log "clear ES_PKG dir"
+		log "rm es_pkg in dest dir"
 	fi
 	
 	mkdir $ES_PKG
@@ -22,21 +22,27 @@ function mv_install_pkg() {
 	cd $ES_PKG
 	tar xzvf es.tgz
 	
-	log "mv install pkg exed"
+	log "put es_pkg in dest dir"
 }
 
 function insure_java8() {
 	if ["8" != $(javac -version 2>&1 | awk '{print $2}' | awk -F '.' '{print $2}')]
-	then
-		java8_pkg $JAVA8_PKG
+	then	
+		put_java8_in
 		java8_guide $ES_BIN
-	fi	
+	fi
 }
 
 function add_user_es() {
-	useradd -d /home/es -m es
-	echo "es.123" | passwd --stdin es
-	chown -R es:es $ES_HOME	
+	if [ -z $(cat /etc/passwd | sed -n '/^es.*\/home\/es/p')]
+	then
+		useradd -d /home/es -m es
+		echo "es.123" | passwd --stdin es
+		chown -R es:es $ES_HOME
+		log "add user es and chown"
+	else
+		log "es user already exist"
+	fi
 }
 
 function es_config_file() {
@@ -88,23 +94,22 @@ function mem_lock() {
 	fi	
 }
 
+put_java8_in(){
+	mv $JAVA8_PKG /opt/tool/jdk
+	log "java version is not java8, put java8_pkg in"	
+}
 
 java8_guide(){
 	if ["" = $(cat $1 | sed -n '/JAVA_HOME/p')]
 	then
-		log "set java8_guide"
 		sed -i '1i export JAVA_HOME=/opt/tool/jdk \
 		export PATH=$JAVA_HOME/bin:$PATH \
 		export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar \
 		export JRE_HOME=$JAVA_HOME/jre' $1
+		log "set java8_guide for es"
 	else
 		log "hava set java8_guide before, skip set java8_guide"
 	fi
-}
-
-java8_pkg(){
-	log "put java8_pkg"
-	mv $JAVA8_PKG /opt/tool/jdk
 }
 
 log() {
