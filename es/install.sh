@@ -143,6 +143,8 @@ function env_var() {
 }
 
 
+touch $INSTALL_LOG
+
 init_vars
 mv_install_pkg
 insure_java8
