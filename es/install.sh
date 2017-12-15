@@ -7,7 +7,7 @@ function init_vars() {
 	ES_HOME=$ES_PKG/elasticsearch-5.2.2
 	ES_BIN=$ES_HOME/bin/elasticsearch
 	ES_CONFIG=$ES_HOME/config/elasticsearch.yml
-	INSTALL_LOG=install.log	
+	INSTALL_LOG="$(pwd)/install.log"
 }
 
 function mv_install_pkg() {
@@ -20,7 +20,7 @@ function mv_install_pkg() {
 	mkdir $ES_PKG
 	cp ./es.tgz $ES_PKG -r
 	cd $ES_PKG
-	tar xzvf es.tgz
+	tar xzvf es.tgz 1>/dev/null
 	
 	log "put es_pkg in dest dir"
 }
@@ -100,7 +100,7 @@ function mem_lock() {
 }
 
 function put_java8_in(){
-	mv $JAVA8_PKG /opt/tool/jdk
+	mv $JAVA8_PKG /opt/tool/jdk 1>/dev/null
 	log "java version is not java8, put java8_pkg in"	
 }
 
