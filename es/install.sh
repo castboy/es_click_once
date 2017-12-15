@@ -72,7 +72,7 @@ function max_virtu_mem() {
 		echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 		log "set max virtual memory"
 	else
-		sed -i 's/vm.max_map_count=.*/vm.max_map_count=262144/'
+		sed -i 's/vm.max_map_count=.*/vm.max_map_count=262144/' /etc/sysctl.conf
 		log "update max virtual memory"
 	fi	
 }
