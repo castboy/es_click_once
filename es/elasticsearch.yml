@@ -1,0 +1,17 @@
+cluster.name: es_cluster
+node.name: ""
+node.master: true
+node.data: true
+path.data: /home/elasticsearch-5.2.2/data_logs/data
+path.logs: /home/elasticsearch-5.2.2/data_logs/logs
+network.host: ""
+http.port: 9200
+transport.tcp.port: 9300
+http.cors.enabled: true
+http.cors.allow-origin: '*'
+discovery.zen.ping.unicast.hosts:
+- ""
+discovery.zen.minimum_master_nodes: 2
+action.destructive_requires_name: true
+bootstrap.system_call_filter: false
+action.auto_create_index: false
