@@ -34,7 +34,7 @@ function insure_java8() {
 }
 
 function add_user_es() {
-	if [ -z $(cat /etc/passwd | sed -n '/^es.*\/home\/es/p')]
+	if [ -z $(cat /etc/passwd | sed -n '/^es.*\/home\/es/p') ]
 	then
 		useradd -d /home/es -m es
 		echo "es.123" | passwd --stdin es
@@ -52,6 +52,7 @@ function es_config_file() {
 	${APT_HOME}/package/es/es_yml -hostNode=hostNode -allNodes=allNodes
 	mv elasticsearch.yml $ES_CONFIG -f	
 }
+
 
 function max_num_of_threads() {
 	if ["" = $(cat /etc/security/limits.conf | sed -n '/es soft nproc 4096/p')]
@@ -95,12 +96,12 @@ function mem_lock() {
 	fi	
 }
 
-put_java8_in(){
+function put_java8_in(){
 	mv $JAVA8_PKG /opt/tool/jdk
 	log "java version is not java8, put java8_pkg in"	
 }
 
-java8_guide(){
+function java8_guide(){
 	if ["" = $(cat $1 | sed -n '/JAVA_HOME/p')]
 	then
 		sed -i '1i export JAVA_HOME=/opt/tool/jdk \
@@ -113,7 +114,7 @@ java8_guide(){
 	fi
 }
 
-log() {
+function log() {
 	if [ -z $2 ]
 	then
 		echo $(date "+%G-%m-%d %H:%M:%S")": INF   detail: $1" >> $LOG_FILE
@@ -123,7 +124,7 @@ log() {
 	fi
 }
 
-env_var() {
+function env_var() {
 	var=$1
 	if [ -z $1 ]
 	then
