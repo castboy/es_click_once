@@ -114,7 +114,7 @@ function put_java8_in(){
 function java8_guide(){
 	if [ -z "$(cat $1 | sed -n '/\/opt\/tool\/jdk/p')" ]
 	then
-		sed -i '1i export JAVA_HOME=/opt/tool/jdk\
+		sed -i '1a export JAVA_HOME=/opt/tool/jdk\
                    export PATH=$JAVA_HOME/bin:$PATH\
                    export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar\
                    export JRE_HOME=$JAVA_HOME/jre' $1
