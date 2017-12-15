@@ -7,7 +7,6 @@ function init_vars() {
 	ES_HOME=$ES_PKG/elasticsearch-5.2.2
 	ES_BIN=$ES_HOME/bin/elasticsearch
 	ES_CONFIG=$ES_HOME/config/elasticsearch.yml
-	INSTALL_LOG="$(pwd)/install.log"
 }
 
 function mv_install_pkg() {
@@ -143,6 +142,8 @@ function env_var() {
 }
 
 
+
+INSTALL_LOG="$(pwd)/install.log"
 touch $INSTALL_LOG
 
 init_vars
