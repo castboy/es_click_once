@@ -1,17 +1,5 @@
 #!/bin/bash
 
-
-init_vars
-mv_install_pkg
-insure_java8
-add_user_es
-es_config_file
-max_num_of_threads
-max_virtu_mem
-max_file_descs
-mem_lock
-
-
 function init_vars() {
 	APT_HOME=$(env_var "${APT_HOME}" "get env_var APT_HOME")
 	ES_PKG=$APT_HOME/package/es
@@ -133,28 +121,14 @@ env_var() {
 	fi
 }
 
-#es install
-./es_install/es_install
 
-#es run
-$ES_HOME/bin/elasticsearch
+init_vars
+mv_install_pkg
+insure_java8
+add_user_es
+es_config_file
+max_num_of_threads
+max_virtu_mem
+max_file_descs
+mem_lock
 
-#es model
-while (esGreenStatus())
-do
-	if model_host
-	then
-		./es_model/model_put
-	fi	
-done
-
-
-
-#es data
-./es_data/conf_build
-
-
-
-esGreenStatus() {
-	
-}

@@ -1,0 +1,77 @@
+#/bin/bash
+
+
+Apthome=${APT_HOME}
+App="kafka_to_es"
+case $1 in
+	"start")
+		start
+	;;
+	"stop")
+		stop
+	restart)
+	;;
+esac
+
+function start() {
+	echo $$ > ${APT_PID_FILE}/${App}.pid
+	cd ${Apthome}/package/${App}
+	apt_model
+	exec ./kafka_to_es	
+}
+
+function stop() {
+	kill `cat /var/run/${App}.pid`;;	
+}
+
+function put_model() {
+	put_model_ok=false
+	
+	while ($put_model_ok)
+	do
+		for node in ${es_nodes_array[@]} 
+		do 
+		    if [ "" != $(curl -XPUT 'node:9200/apt' --data-binary @$Apthome/package/es_model | sed -n '/.*acknowledged.*true.*shards_acknowledged.*true/p') ]
+			then
+				put_model_ok=true
+				break
+			fi
+		done
+		sleep 100ms		
+	done
+}
+
+function es_nodes() {
+	es_nodes= ./get es_node
+
+	OLD_IFS="$IFS" 
+	IFS=","
+	
+	es_nodes_array=($ES_NODES) 
+	
+	IFS="$OLD_IFS" 	
+}
+
+function index_apt_exist() {
+	for node in ${es_nodes_array[@]}
+	do
+		if [ "" != $(curl 'node:9200/_cat/indices' | sed -n '/apt/p') ]
+		then
+			echo true
+			return
+		fi
+	done
+	
+	echo false
+	return
+}
+
+function apt_model() {
+	es_node
+	if index_apt_exist
+	then
+	else
+		put_model
+}
+
+exit 0

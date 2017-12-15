@@ -1,0 +1,27 @@
+#/bin/bash
+
+
+Apthome=${APT_HOME}
+App="es"
+case $1 in
+	"start")
+		start
+	;;
+	"stop")
+		stop
+	restart)
+	;;
+esac
+
+function start() {
+	echo $$ > ${APT_PID_FILE}/${App}.pid
+	cd ${Apthome}/package/${App}
+	exec ./apt_agent	
+}
+
+function stop() {
+	kill `cat /var/run/${App}.pid`;;	
+}
+
+
+exit 0
