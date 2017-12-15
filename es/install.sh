@@ -59,6 +59,7 @@ function max_num_of_threads() {
 	then
 		sed -i '$a es soft nproc 4096 \
 		es hard nproc 4096' /etc/security/limits.conf
+		sed -i 's/^[" "]*//' /etc/security/limits.conf
 		log "set max number of threads"
 	else
 		log "have set max number of threads before"
@@ -81,6 +82,7 @@ function max_file_descs() {
 	then
 		sed -i '$a es hard nofile 65536 \
 		es soft nofile 65536' /etc/security/limits.conf
+		sed -i 's/^[" "]*//' /etc/security/limits.conf
 		log "set max file descriptors"
 	else
 		log "have set max file descriptors before"
@@ -93,6 +95,7 @@ function mem_lock() {
 	then
 		sed -i '$a es soft memlock unlimited \ 
 		es hard memlock unlimited' /etc/security/limits.conf
+		sed -i 's/^[" "]*//' /etc/security/limits.conf
 		log "set memory locking"
 	else
 		log "have set memory locking before"
@@ -111,6 +114,7 @@ function java8_guide(){
 		export PATH=$JAVA_HOME/bin:$PATH \
 		export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar \
 		export JRE_HOME=$JAVA_HOME/jre' $1
+		sed -i 's/^[" "]*//' $1
 		log "set java8_guide for es"
 	else
 		log "hava set java8_guide before, skip set java8_guide"
