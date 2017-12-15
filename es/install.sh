@@ -11,7 +11,7 @@ function init_vars() {
 }
 
 function mv_install_pkg() {
-	if [ "" != $(ls $ES_PKG | sed -n '/es/p') ]
+	if [ "" != $(ls $APT_HOME/package | sed -n '/es/p') ]
 	then
 		rm $ES_PKG -rf
 		log "rm es_pkg in dest dir"
