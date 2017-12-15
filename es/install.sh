@@ -3,7 +3,7 @@
 function init_vars() {
 	APT_HOME=$(env_var "${APT_HOME}" "get env_var APT_HOME")
 	ES_PKG=$APT_HOME/package/es
-	JAVA8_PKG=$ES_PKG/jdk-8u132-linux-x64.tar.gz
+	JAVA8_PKG=$ES_PKG/jdk1.8.0_131
 	ES_HOME=$ES_PKG/elasticsearch-5.2.2
 	ES_BIN=$ES_HOME/bin/elasticsearch
 	ES_CONFIG=$ES_HOME/config/elasticsearch.yml
@@ -104,8 +104,7 @@ java8_guide(){
 
 java8_pkg(){
 	log "put java8_pkg"
-	tar zxvf $1 -C /opt/tool
-	mv $(ls | sed '/jdk.*/p') jdk
+	mv $JAVA8_PKG /opt/tool/jdk
 }
 
 log() {
