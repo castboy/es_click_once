@@ -33,7 +33,7 @@ function add_user_es() {
 
 function es_config_file() {
 	hostNode=$(env_var "${THIS_HOST}" "get env_var THIS_HOST")
-	allNodes=$(env_var "" "get all es nodes")
+	allNodes=$(env_var "$(apt_show_app eleacsearch)" "get all es nodes")
 	${APT_HOME}/package/es/es_yml -hostNode=hostNode -allNodes=allNodes
 	mv elasticsearch.yml $ES_CONFIG -f	
 }
