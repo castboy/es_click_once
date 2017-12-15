@@ -26,7 +26,7 @@ function mv_install_pkg() {
 }
 
 function insure_java8() {
-	if ["8" != $(javac -version 2>&1 | awk '{print $2}' | awk -F '.' '{print $2}')]
+	if [ "8" != $(javac -version 2>&1 | awk '{print $2}' | awk -F '.' '{print $2}') ]
 	then	
 		put_java8_in
 		java8_guide $ES_BIN
@@ -55,9 +55,10 @@ function es_config_file() {
 
 
 function max_num_of_threads() {
-	if ["" = $(cat /etc/security/limits.conf | sed -n '/es soft nproc 4096/p')]
+	if [ -z "$(cat /etc/security/limits.conf | sed -n '/es soft nproc 4096/p')" ]
 	then
-		sed -i '$a es soft nproc 4096\es hard nproc 4096' /etc/security/limits.conf
+		sed -i '$a es soft nproc 4096 \
+		es hard nproc 4096' /etc/security/limits.conf
 		log "set max number of threads"
 	else
 		log "have set max number of threads before"
@@ -65,7 +66,7 @@ function max_num_of_threads() {
 }
 
 function max_virtu_mem() {
-	if ["" = $(cat /etc/sysctl.conf | sed -n '/vm.max_map_count/p')]
+	if [ -z "$(cat /etc/sysctl.conf | sed -n '/vm.max_map_count/p')" ]
 	then
 		echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 		log "set max virtual memory"
@@ -76,9 +77,10 @@ function max_virtu_mem() {
 }
 
 function max_file_descs() {
-	if ["" = $(nl /etc/security/limits.conf | sed -n '/es hard nofile 65536/p')]
+	if [ -z "$(nl /etc/security/limits.conf | sed -n '/es hard nofile 65536/p')" ]
 	then
-		sed -i '$a es hard nofile 65536\es soft nofile 65536' /etc/security/limits.conf
+		sed -i '$a es hard nofile 65536 \
+		es soft nofile 65536' /etc/security/limits.conf
 		log "set max file descriptors"
 	else
 		log "have set max file descriptors before"
@@ -87,9 +89,10 @@ function max_file_descs() {
 
 
 function mem_lock() {
-	if ["" = $(nl /etc/security/limits.conf | sed -n '/es soft memlock unlimited/p')]
+	if [ -z "$(nl /etc/security/limits.conf | sed -n '/es soft memlock unlimited/p')" ]
 	then
-		sed -i '$a es soft memlock unlimited\es hard memlock unlimited' /etc/security/limits.conf
+		sed -i '$a es soft memlock unlimited \ 
+		es hard memlock unlimited' /etc/security/limits.conf
 		log "set memory locking"
 	else
 		log "have set memory locking before"
