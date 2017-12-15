@@ -11,10 +11,18 @@ function init_vars() {
 }
 
 function mv_install_pkg() {
+	if [ "" != $(ls $ES_PKG | sed -n '/es/p') ]
+	then
+		rm $ES_PKG -rf
+		log "clear ES_PKG dir"
+	fi
+	
 	mkdir $ES_PKG
 	cp ./es.tgz $ES_PKG -r
 	cd $ES_PKG
 	tar xzvf es.tgz
+	
+	log "mv install pkg exed"
 }
 
 function insure_java8() {
