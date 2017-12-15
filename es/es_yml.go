@@ -109,7 +109,8 @@ func WrAppend(file string, b []byte) error {
 
 func main() {
 	hostNode := flag.String("hostNode", "", "localhost")
-	allNodes := flag.String("AllNodes", "", "all es nodes")
+	allNodes := flag.String("allNodes", "", "all es nodes")
+	flag.Parse()
 
 	host := host(*allNodes)
 	yml := yml(host, *hostNode)
