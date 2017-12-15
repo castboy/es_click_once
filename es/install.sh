@@ -107,7 +107,7 @@ function mem_lock() {
 }
 
 function put_java8_in(){
-	ln -s JAVA8_PKG /opt/tool/java
+	ln -s $JAVA8_PKG /opt/tool/java
 	log "java version is not java8, put java8_pkg in"	
 }
 
