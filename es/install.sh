@@ -53,7 +53,7 @@ function es_config_file() {
 	hostNode=$(env_var "${THIS_HOST}" "get env_var THIS_HOST")
 	#allNodes=$(env_var "$(apt_show_app eleacsearch)" "get all es nodes")
 	allNodes=$(env_var "${ES_NODES}" "get all es nodes")
-	${APT_HOME}/package/es/es_yml -hostNode=$hostNode -allNodes=$allNodes
+	${APT_HOME}/package/es/es_yml -hostNode=$hostNode -allNodes=$allNodes -esHome=$ES_HOME
 	mv elasticsearch.yml $ES_CONFIG -f	
 }
 

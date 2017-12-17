@@ -15,8 +15,6 @@ const (
 	CLUSTER_NAME = "es_cluster"
 	NODE_MASTER  = true
 	NODE_DATA    = true
-	PATH_DATA    = "/home/elasticsearch-5.2.2/data_logs/data"
-	PATH_LOGS    = "/home/elasticsearch-5.2.2/data_logs/logs"
 	HTTP_PORT    = 9200
 	TTP          = 9300
 	HCE          = true
@@ -26,6 +24,9 @@ const (
 	BSCF         = false
 	AACI         = false
 )
+
+var pathData string
+var pathLog string
 
 type EsYml struct {
 	ClusterName string   `yaml:"cluster.name"`
@@ -62,8 +63,8 @@ func yml(allNodes []string, hostNode string) Yml {
 		NodeName:    hostNode,
 		NodeMaster:  NODE_MASTER,
 		NodeData:    NODE_DATA,
-		PathData:    PATH_DATA,
-		PathLogs:    PATH_LOGS,
+		PathData:    pathData,
+		PathLogs:    pathLog,
 		NetworkHost: hostNode,
 		HttpPort:    HTTP_PORT,
 		TTP:         TTP,
@@ -110,6 +111,11 @@ func WrAppend(file string, b []byte) error {
 func main() {
 	hostNode := flag.String("hostNode", "", "localhost")
 	allNodes := flag.String("allNodes", "", "all es nodes")
+	esHome := flag.String("esHome", "", "es home")
+
+	pathData = *esHome + "/data_logs/data"
+	pathLog = *esHome + "/data_logs/log"
+
 	flag.Parse()
 
 	host := host(*allNodes)
