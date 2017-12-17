@@ -45,7 +45,8 @@ function add_user_es() {
 		chown -R es:es $ES_HOME
 		log "add user es and chown"
 	else
-		log "es user already exist"
+		chown -R es:es $ES_HOME
+		log "es user already exist, chown only"
 	fi
 }
 
