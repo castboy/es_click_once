@@ -109,9 +109,10 @@ func WrAppend(file string, b []byte) error {
 }
 
 func main() {
+	esHome := flag.String("esHome", "", "es home")
 	hostNode := flag.String("hostNode", "", "localhost")
 	allNodes := flag.String("allNodes", "", "all es nodes")
-	esHome := flag.String("esHome", "", "es home")
+
 	flag.Parse()
 
 	pathData = *esHome + "/data_logs/data"
