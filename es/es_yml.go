@@ -112,11 +112,10 @@ func main() {
 	hostNode := flag.String("hostNode", "", "localhost")
 	allNodes := flag.String("allNodes", "", "all es nodes")
 	esHome := flag.String("esHome", "", "es home")
+	flag.Parse()
 
 	pathData = *esHome + "/data_logs/data"
 	pathLog = *esHome + "/data_logs/log"
-
-	flag.Parse()
 
 	host := host(*allNodes)
 	yml := yml(host, *hostNode)
