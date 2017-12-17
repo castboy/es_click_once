@@ -107,7 +107,7 @@ function mem_lock() {
 }
 
 function put_java8_in(){
-	ln -s $JAVA8_PKG /opt/tool/java
+	ln -s $JAVA8_PKG /opt/tool/jdk
 	log "java version is not java8, put java8_pkg in"	
 }
 
@@ -115,10 +115,9 @@ function java8_guide(){
 	if [ -z "$(cat $1 | sed -n '/\/opt\/tool\/jdk/p')" ]
 	then
 		sed -i '1a export JAVA_HOME=/opt/tool/jdk\
-                   export PATH=$JAVA_HOME/bin:$PATH\
-                   export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar\
-                   export JRE_HOME=$JAVA_HOME/jre' $1
-		sed -i 's/^[" "]*//' $1
+export PATH=$JAVA_HOME/bin:$PATH\
+export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar\
+export JRE_HOME=$JAVA_HOME/jre' $1
 		log "set java8_guide for es"
 	else
 		log "hava set java8_guide before, skip set java8_guide"
