@@ -17,7 +17,7 @@ function start() {
 	echo $$ > ${APT_PID_FILE}/${App}.pid
 	cd ${Apthome}/package/${App}
 	apt_model
-	exec ./kafka_to_es	
+	exec ./apt_kafka_to_es	
 }
 
 function stop() {
