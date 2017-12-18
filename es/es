@@ -2,10 +2,8 @@
 
 function start() {
 	echo $$ > ${APT_PID_FILE}/${App}.pid
-	cd ${Apthome}/package/${App}/elasticsearch-5.2.2
-	su es
-	bin/elasticsearch
-	exec bin/elasticsearch	
+	su - es -c "exec ${Apthome}/package/${App}/elasticsearch-5.2.2/bin/elasticsearch"
+	exit
 }
 
 function stop() {
