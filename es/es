@@ -1,25 +1,28 @@
-#/bin/bash
+#!/bin/bash
 
 function start() {
 	echo $$ > ${APT_PID_FILE}/${App}.pid
-	cd ${Apthome}/package/${App}
+	cd ${Apthome}/package/${App}/elasticsearch-5.2.2
+	su es
+	bin/elasticsearch
 	exec bin/elasticsearch	
 }
 
 function stop() {
-	kill `cat /var/run/${App}.pid`;;	
+	kill `cat /var/run/${App}.pid`	
 }
 
 Apthome=${APT_HOME}
 App="es"
 case $1 in
-	"start")
-		start
-	;;
-	"stop")
-		stop
-	restart)
-	;;
+  "start")
+  start
+  ;;
+  "stop")
+  stop
+  ;;
+  "restart")
+  ;;
 esac
 
 exit 0
