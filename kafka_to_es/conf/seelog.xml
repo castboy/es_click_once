@@ -1,0 +1,10 @@
+<seelog minlevel="trace">
+    <outputs formatid="main">   
+		<filter levels="trace, debug, info, warn, error, critical">
+                <rollingfile type="size" filename="log/es.log" maxsize="1024000" maxrolls="5"/>
+        </filter>
+    </outputs>
+    <formats>
+        <format id="main" format="%Date(2006-01-02 15:04:05) %LEV %Msg%n"/>
+    </formats>
+</seelog>
