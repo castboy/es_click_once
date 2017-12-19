@@ -1,18 +1,5 @@
 #/bin/bash
 
-
-Apthome=${APT_HOME}
-App="kafka_to_es"
-case $1 in
-	"start")
-		start
-	;;
-	"stop")
-		stop
-	restart)
-	;;
-esac
-
 function start() {
 	echo $$ > ${APT_PID_FILE}/${App}.pid
 	cd ${Apthome}/package/${App}
@@ -31,8 +18,9 @@ function put_model() {
 	do
 		for node in ${es_nodes_array[@]} 
 		do 
-		    if [ "" != $(curl -XPUT 'node:9200/apt' --data-binary @$Apthome/package/es_model | sed -n '/.*acknowledged.*true.*shards_acknowledged.*true/p') ]
+		    if [ "" != $(curl -XPUT 'node:9200/apt_test' --data-binary @$Apthome/package/es_model 2>/dev/null | sed -n '/.*acknowledged.*true.*shards_acknowledged.*true/p') ]
 			then
+				log "put es model success"
 				put_model_ok=true
 				break
 			fi
@@ -43,6 +31,13 @@ function put_model() {
 
 function es_nodes() {
 	es_nodes= ./get es_node
+	if [ -z es_nodes ]
+	then
+		log "get es-nodes failed!"
+		exit 1
+	else
+		log "get es-nodes success"
+	fi
 
 	OLD_IFS="$IFS" 
 	IFS=","
@@ -55,23 +50,47 @@ function es_nodes() {
 function index_apt_exist() {
 	for node in ${es_nodes_array[@]}
 	do
-		if [ "" != $(curl 'node:9200/_cat/indices' | sed -n '/apt/p') ]
+		if [ "" != $(curl 'node:9200/_cat/indices' 2>/dev/null | sed -n '/apt/p') ]
 		then
+			log "es index `apt` exist"
 			echo true
 			return
 		fi
 	done
 	
+	log "es index `apt` not exist"
 	echo false
 	return
 }
 
 function apt_model() {
 	es_node
-	if index_apt_exist
+	if !index_apt_exist
 	then
-	else
 		put_model
+	fi
 }
+
+function log() {
+	echo $(date "+%G-%m-%d %H:%M:%S")": INF   detail: $1" >> $INSTALL_LOG
+}
+
+function log_file() {
+	INSTALL_LOG="$(pwd)/run-$(date "+%G-%m-%d_%H:%M:%S").log"
+	touch $INSTALL_LOG
+}
+
+log_file
+Apthome=${APT_HOME}
+App="kafka_to_es"
+case $1 in
+	"start")
+	start
+	;;
+	"stop")
+	stop
+	"restart")
+	;;
+esac
 
 exit 0

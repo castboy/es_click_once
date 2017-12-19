@@ -7,16 +7,18 @@ partitionSet=0,1,2,3
 es-nodes=192.168.1.103,192.168.1.102
 es-port=9200
 
-sed -i "1i [topic] \
-vds-alert = $partitionSet \
-waf-alert = $partitionSet \
-ids-alert = $partitionSet \
+echo " " > $conf
+
+sed -i '1i [topic] \
+vds-alert = '$partitionSet' \
+waf-alert = '$partitionSet' \
+ids-alert = '$partitionSet' \
 \
 [kafka] \
-brokers = $kafka-brokers \
+brokers = '$kafka-brokers' \
 start = \
 \
-[elasticsearch]
-nodes = $es-nodes \
-port = $es-port" conf
+[elasticsearch] \
+nodes = '$es-nodes' \
+port = '$es-port'' $conf
 
