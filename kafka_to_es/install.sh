@@ -56,13 +56,13 @@ function mv_install_pkg() {
 
 function conf_file() {
 	partitionSet=0
-    #kafka_brokers=$(apt_config_show kafka brokers)
-	$kafka_brokers=192.168.1.11;192.168.1.12;192.168.1.13
+    	#kafka_brokers=$(apt_config_show kafka brokers)
+	kafka_brokers="192.168.1.11;192.168.1.12;192.168.1.13"
 	kafka_brokers=$(echo $kafka_brokers | sed 's/;/,/g')
 	
 	#es_nodes=$(apt_config_show es nodes)
-	es_nodes=10.88.1.102;10.88.1.103
-	es_nodes=$(echo es_nodes | sed 's/;/,/g')
+	es_nodes="10.88.1.102;10.88.1.103"
+	es_nodes=$(echo $es_nodes | sed 's/;/,/g')
 	es_port=9200
 	
 	echo " " > $CONF_FILE
