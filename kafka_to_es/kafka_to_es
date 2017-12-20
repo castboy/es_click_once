@@ -14,7 +14,7 @@ function stop() {
 function put_model_ok() {	
 	for node in ${es_nodes_array[@]} 
 	do 
-		res=$(curl -XPUT "$node:9200/apt_test" --data-binary @$Apthome/package/es_model 2>/dev/null | sed -n '/.*acknowledged.*true.*shards_acknowledged.*true/p')
+		res=$(curl -XPUT "$node:9200/$es_index" --data-binary @$Apthome/package/es_model 2>/dev/null | sed -n '/.*acknowledged.*true.*shards_acknowledged.*true/p')
 	    if [ "" != "$res" ]
 		then
 			echo true
@@ -26,7 +26,8 @@ function put_model_ok() {
 }
 
 function es_nodes() {
-	es_nodes= ./get es_node
+	#es_nodes= ./get es_node
+	es_nodes=192.168.1.12,192.168.1.11,192.168.1.13
 	if [ -z es_nodes ]
 	then
 		log "get es-nodes failed!"
