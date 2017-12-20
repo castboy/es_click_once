@@ -19,11 +19,11 @@ function init_vars() {
 	ES_HOME=$ES_PKG/elasticsearch-5.2.2
 	ES_BIN=$ES_HOME/bin/elasticsearch
 	ES_CONFIG=$ES_HOME/config/elasticsearch.yml
-	ES_DATA_LOG=/home/es/data_logs
+	ES_DATA_LOG=/home/es
 }
 
 function mv_install_pkg() {
-	if [ "" != "$(ls $APT_HOME/package | sed -n '/es/p')" ]
+	if [ "" != "$(ls ${APT_HOME}/package | sed -n '/es/p')" ]
 	then
 		rm $ES_PKG -rf
 		log "rm es_pkg in dest dir"
@@ -48,12 +48,14 @@ function insure_java8() {
 function add_user_es() {
 	if [ -z "$(cat /etc/passwd | sed -n '/^es.*\/home\/es/p')" ]
 	then
+                echo "no user es"
 		useradd -d /home/es -m es
 		echo "es.123" | passwd --stdin es
 		chown -R es:es $ES_HOME
 		chown -R es:es $ES_DATA_LOG
 		log "add user es and chown"
 	else
+                echo "user es exist"
 		chown -R es:es $ES_HOME
 		chown -R es:es $ES_DATA_LOG
 		log "es user already exist, chown only"
