@@ -109,14 +109,14 @@ func WrAppend(file string, b []byte) error {
 }
 
 func main() {
-	esHome := flag.String("esHome", "", "es home")
+	esDataLog := flag.String("esDataLog", "", "es data and log dir")
 	hostNode := flag.String("hostNode", "", "localhost")
 	allNodes := flag.String("allNodes", "", "all es nodes")
 
 	flag.Parse()
 
-	pathData = *esHome + "/data_logs/data"
-	pathLog = *esHome + "/data_logs/log"
+	pathData = *esDataLog + "/data_logs/data"
+	pathLog = *esDataLog + "/data_logs/log"
 
 	host := host(*allNodes)
 	yml := yml(host, *hostNode)

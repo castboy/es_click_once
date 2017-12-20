@@ -1,17 +1,19 @@
 #!/bin/bash
 
-function log_file() {
-	INSTALL_LOG="$(pwd)/install-$(date "+%G-%m-%d_%H:%M:%S").log"
-	touch $INSTALL_LOG
+func init_log() {
+	LOG_DIR="$(pwd)/install_log"
+	INSTALL_LOG="$LOG_DIR/$(date '+%G-%m-%d_%H:%M:%S').log"
 }
 
 function init_vars() {
-	APT_HOME=$(env_var "${APT_HOME}" "get env_var APT_HOME")
+	#APT_HOME=$(env_var "${APT_HOME}" "get env_var APT_HOME")
+	APT_HOME=/opt
 	ES_PKG=$APT_HOME/package/es
 	JAVA8_PKG=$ES_PKG/jdk1.8.0_131
 	ES_HOME=$ES_PKG/elasticsearch-5.2.2
 	ES_BIN=$ES_HOME/bin/elasticsearch
 	ES_CONFIG=$ES_HOME/config/elasticsearch.yml
+	ES_DATA_LOG=/home/es
 }
 
 function mv_install_pkg() {
@@ -43,18 +45,21 @@ function add_user_es() {
 		useradd -d /home/es -m es
 		echo "es.123" | passwd --stdin es
 		chown -R es:es $ES_HOME
+		chown -R es:es $ES_DATA_LOG
 		log "add user es and chown"
 	else
 		chown -R es:es $ES_HOME
+		chown -R es:es $ES_DATA_LOG
 		log "es user already exist, chown only"
 	fi
 }
 
 function es_config_file() {
-	hostNode=$(env_var "${THIS_HOST}" "get env_var THIS_HOST")
+	#hostNode=$(env_var "${THIS_HOST}" "get env_var THIS_HOST")
 	#allNodes=$(env_var "$(apt_show_app eleacsearch)" "get all es nodes")
-	allNodes=$(env_var "${ES_NODES}" "get all es nodes")
-	${APT_HOME}/package/es/es_yml -esHome=$ES_HOME -hostNode=$hostNode -allNodes=$allNodes 
+	hostNode=10.88.1.102
+	allNodes=10.88.1.102,10.88.1.103,10.88.1.105
+	${APT_HOME}/package/es/es_yml -esDataLog=$ES_DATA_LOG -hostNode=$hostNode -allNodes=$allNodes 
 	mv elasticsearch.yml $ES_CONFIG -f	
 }
 
@@ -108,14 +113,14 @@ function mem_lock() {
 }
 
 function put_java8_in(){
-	ln -s $JAVA8_PKG /opt/tool/jdk
+	ln -s $JAVA8_PKG /opt/tool/jdk1.8
 	log "java version is not java8, put java8_pkg in"	
 }
 
 function java8_guide(){
 	if [ -z "$(cat $1 | sed -n '/\/opt\/tool\/jdk/p')" ]
 	then
-		sed -i '1a export JAVA_HOME=/opt/tool/jdk\
+		sed -i '1a export JAVA_HOME=/opt/tool/jdk1.8\
 export PATH=$JAVA_HOME/bin:$PATH\
 export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar\
 export JRE_HOME=$JAVA_HOME/jre' $1
@@ -139,17 +144,14 @@ function env_var() {
 	var=$1
 	if [ -z $1 ]
 	then
-		log "$2 failed" "c"
+		log "$2 failed" "CRT"
 	else
 		log "$2 success" 
 		echo "$var"
 	fi
 }
 
-
-
-
-log_file
+init_log
 init_vars
 mv_install_pkg
 insure_java8
