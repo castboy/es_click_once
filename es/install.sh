@@ -33,7 +33,7 @@ function mv_install_pkg() {
 }
 
 function insure_java8() {
-	if [ "8" != "$(java -version 2>&1 | awk '{print $2}' | awk -F '.' '{print $2}')" ]
+	if [ "8" != "$(javac -version 2>&1 | awk '{print $2}' | awk -F '.' '{print $2}')" ]
 	then	
 		put_java8_in
 		java8_guide $ES_BIN
