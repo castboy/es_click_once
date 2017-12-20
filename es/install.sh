@@ -113,14 +113,14 @@ function mem_lock() {
 }
 
 function put_java8_in(){
-	ln -s $JAVA8_PKG /opt/tool/jdk1.8
+	ln -s $JAVA8_PKG /usr/local/jdk1.8
 	log "java version is not java8, put java8_pkg in"	
 }
 
 function java8_guide(){
 	if [ -z "$(cat $1 | sed -n '/\/opt\/tool\/jdk/p')" ]
 	then
-		sed -i '1a export JAVA_HOME=/opt/tool/jdk1.8\
+		sed -i '1a export JAVA_HOME=/usr/local/jdk1.8\
 export PATH=$JAVA_HOME/bin:$PATH\
 export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar\
 export JRE_HOME=$JAVA_HOME/jre' $1
