@@ -1,7 +1,8 @@
 #!/bin/bash
 
-func init_log() {
+function init_log() {
 	LOG_DIR="$(pwd)/install_log"
+        mkdir $LOG_DIR
 	INSTALL_LOG="$LOG_DIR/$(date '+%G-%m-%d_%H:%M:%S').log"
 }
 
