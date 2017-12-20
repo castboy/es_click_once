@@ -48,7 +48,6 @@ function insure_java8() {
 function add_user_es() {
 	if [ -z "$(cat /etc/passwd | sed -n '/^es.*\/home\/es/p')" ]
 	then
-                echo "no user es"
 		useradd -d /home/es -m es
 		echo "es.123" | passwd --stdin es
 		chown -R es:es $ES_HOME
