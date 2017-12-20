@@ -1,8 +1,13 @@
 #!/bin/bash
 
 function init_log() {
-	LOG_DIR="$(pwd)/install_log"
-        mkdir $LOG_DIR
+        LOG_DIR="$(pwd)/install_log"
+
+        if [ -z $(ls | sed -n '/install_log/p') ]
+        then
+            mkdir $LOG_DIR
+        fi
+
 	INSTALL_LOG="$LOG_DIR/$(date '+%G-%m-%d_%H:%M:%S').log"
 }
 
@@ -14,7 +19,7 @@ function init_vars() {
 	ES_HOME=$ES_PKG/elasticsearch-5.2.2
 	ES_BIN=$ES_HOME/bin/elasticsearch
 	ES_CONFIG=$ES_HOME/config/elasticsearch.yml
-	ES_DATA_LOG=/home/es
+	ES_DATA_LOG=/home/es/data_logs
 }
 
 function mv_install_pkg() {
