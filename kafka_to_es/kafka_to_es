@@ -25,9 +25,9 @@ function put_model_ok() {
 	echo false
 }
 
-function es_nodes() {
+function get_es_nodes() {
 	#es_nodes= ./get es_node
-	es_nodes=192.168.1.12,192.168.1.11,192.168.1.13
+	es_nodes="10.88.1.102;10.88.1.103"
 	if [ -z es_nodes ]
 	then
 		log "get es-nodes failed!"
@@ -37,7 +37,7 @@ function es_nodes() {
 	fi
 
 	OLD_IFS="$IFS" 
-	IFS=","
+	IFS=";"
 	
 	es_nodes_array=($es_nodes) 
 	
@@ -60,7 +60,7 @@ function index_apt_exist() {
 }
 
 function apt_model() {
-	es_nodes
+	get_es_nodes
 	
 	if $(index_apt_exist)
 	then
@@ -77,17 +77,22 @@ function apt_model() {
 }
 
 function log() {
-	echo $(date "+%G-%m-%d %H:%M:%S")": INF   detail: $1" >> $INSTALL_LOG
+	echo "$(date '+%G-%m-%d %H:%M:%S'): INF   detail: $1" >> $START_LOG
 }
 
 function log_file() {
-	INSTALL_LOG="$(pwd)/run-$(date "+%G-%m-%d_%H:%M:%S").log"
-	touch $INSTALL_LOG
+	if [ -z $(ls "$(pwd)/log/" | sed -n '/start_log/p') ]
+	then
+		mkdir "$(pwd)/log/start_log"
+	fi
+
+	START_LOG="$(pwd)/log/start_log/start-$(date "+%G-%m-%d_%H:%M:%S").log"
 }
 
 log_file
-es_index=apt_test
-Apthome=${APT_HOME}
+es_index=apt
+#Apthome=${APT_HOME}
+Apthome=/opt
 App="kafka_to_es"
 case $1 in
 	"start")
