@@ -70,7 +70,7 @@ function apt_model() {
 		then
 			log "put es model success"
 		else
-			log "put es model failed"
+			log "put es model failed, maybe the index already exists"
 		fi
 						
 	fi
@@ -81,12 +81,12 @@ function log() {
 }
 
 function log_file() {
-	if [ -z $(ls "$(pwd)/log/" | sed -n '/start_log/p') ]
+	if [ -z $(ls "$(pwd)" | sed -n '/log/p') ]
 	then
-		mkdir "$(pwd)/log/start_log"
+		mkdir "$(pwd)/log/start" -p
 	fi
 
-	START_LOG="$(pwd)/log/start_log/start-$(date "+%G-%m-%d_%H:%M:%S").log"
+	START_LOG="$(pwd)/log/start/start-$(date "+%G-%m-%d_%H:%M:%S").log"
 }
 
 log_file
