@@ -1,14 +1,20 @@
 #!/bin/bash
+#
+# chkconfig: 23456 91 91
+# description: ES 
+# processname: es 
+#
+. /etc/profile
 
 function start() {
-	echo $$ > ${APT_PID_FILE}/${App}.pid
-	su - es -c "exec ${Apthome}/package/${App}/elasticsearch-5.2.2/bin/elasticsearch"
-	exit
+	su - es -c "exec ${Apthome}/package/${App}/elasticsearch-5.2.2/bin/elasticsearch" &
+	echo $! > ${APT_PID_FILE}/${App}.pid
 }
 
 function stop() {
 	kill `cat /var/run/${App}.pid`	
 }
+
 
 Apthome=${APT_HOME}
 App="es"
