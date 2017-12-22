@@ -81,6 +81,7 @@ nodes = '$es_nodes' \
 port = '$es_port'' $CONF_FILE	
 }
 
+APT_HOME=/opt
 init_log
 init_vars
 mv_install_pkg

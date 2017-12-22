@@ -11,18 +11,26 @@ function stop() {
 	kill `cat /var/run/${App}.pid`	
 }
 
-function put_model_ok() {	
+function put_index() {	
 	for node in ${es_nodes_array[@]} 
 	do 
 		res=$(curl -XPUT "$node:9200/$es_index" --data-binary @$Apthome/package/es_model 2>/dev/null | sed -n '/.*acknowledged.*true.*shards_acknowledged.*true/p')
 	    if [ "" != "$res" ]
 		then
-			echo true
+			log "put index ok"
 			return
 		fi
 	done
-	
-	echo false
+
+        for node in ${es_nodes_array[@]}
+	do
+		res=$(curl "$node:9200/_cat/indices" 2>/dev/null | awk '{print $3}')	
+		if [ $res = $ex_index ]
+		then
+			log "index:$es_index already exist"
+		else
+			log "put index failed"
+	done
 }
 
 function get_es_nodes() {
@@ -44,7 +52,7 @@ function get_es_nodes() {
 	IFS="$OLD_IFS" 	
 }
 
-function index_apt_exist() {
+function index_exist() {
 	for node in ${es_nodes_array[@]}
 	do
 		res=$(curl "node:9200/_cat/indices" 2>/dev/null | sed -n '/apt/p')
@@ -62,17 +70,11 @@ function index_apt_exist() {
 function apt_model() {
 	get_es_nodes
 	
-	if $(index_apt_exist)
+	if $(index_exist)
 	then
 		log "es index $es_index exist"
 	else
-		if $(put_model_ok)
-		then
-			log "put es model success"
-		else
-			log "put es model failed, maybe the index already exists"
-		fi
-						
+		put_index
 	fi
 }
 
