@@ -1,7 +1,9 @@
 #!/bin/bash
 
+MYDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 function init_log() {
-        LOG_DIR="$(pwd)/install_log"
+        LOG_DIR="${MYDIR}/install_log"
 
         if [ -z $(ls | sed -n '/install_log/p') ]
         then
@@ -12,8 +14,7 @@ function init_log() {
 }
 
 function init_vars() {
-	#APT_HOME=$(env_var "${APT_HOME}" "get env_var APT_HOME")
-	APT_HOME=/opt
+	APT_HOME=$(env_var "${APT_HOME}" "get env_var APT_HOME")
 	ES_PKG=$APT_HOME/package/es
 	JAVA8_PKG=$ES_PKG/jdk1.8.0_131
 	ES_HOME=$ES_PKG/elasticsearch-5.2.2
@@ -30,6 +31,7 @@ function mv_install_pkg() {
 	fi
 	
 	mkdir $ES_PKG
+	cd ${MYDIR}
 	cp ./es.tgz $ES_PKG -r
 	cd $ES_PKG
 	tar xzvf es.tgz 1>/dev/null
@@ -62,10 +64,10 @@ function add_user_es() {
 }
 
 function es_config_file() {
-	#hostNode=$(env_var "${THIS_HOST}" "get env_var THIS_HOST")
-	#allNodes=$(env_var "$(apt_show_app es nodes)" "get all es nodes")
-	hostNode=10.88.1.102
-	allNodes=10.88.1.102,10.88.1.103,10.88.1.105
+	hostNode=$(env_var "${THIS_HOST}" "get env_var THIS_HOST")
+	allNodes=$(env_var "$(apt_show_app es nodes)" "get all es nodes")
+	#hostNode=10.88.1.102
+	#allNodes=10.88.1.102,10.88.1.103,10.88.1.105
 	${APT_HOME}/package/es/es_yml -esDataLog=$ES_DATA_LOG -hostNode=$hostNode -allNodes=$allNodes 
 	mv elasticsearch.yml $ES_CONFIG -f	
 }
@@ -92,6 +94,7 @@ function max_virtu_mem() {
 		sed -i 's/vm.max_map_count=.*/vm.max_map_count=262144/' /etc/sysctl.conf
 		log "update max virtual memory"
 	fi	
+	/sbin/sysctl -p
 }
 
 function max_file_descs() {
@@ -158,6 +161,10 @@ function env_var() {
 	fi
 }
 
+function mv_es() {
+	cp ${ES_PKG}/es /etc/init.d/
+}
+
 init_log
 init_vars
 mv_install_pkg
@@ -168,4 +175,4 @@ max_num_of_threads
 max_virtu_mem
 max_file_descs
 mem_lock
-
+mv_es
