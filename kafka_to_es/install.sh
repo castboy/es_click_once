@@ -1,7 +1,9 @@
 #!/bin/bash
 
+MYDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 function init_log() {
-    LOG_DIR="$(pwd)/install_log"
+    LOG_DIR="${MYDIR}/install_log"
 
     if [ -z $(ls | sed -n '/install_log/p') ]
     then
@@ -56,12 +58,12 @@ function mv_install_pkg() {
 
 function conf_file() {
 	partitionSet=0
-    	#kafka_brokers=$(apt_config_show kafka brokers)
-	kafka_brokers="192.168.1.11;192.168.1.12;192.168.1.13"
+    	kafka_brokers=$(apt_config_show kafka brokers)
+	#kafka_brokers="192.168.1.11;192.168.1.12;192.168.1.13"
 	kafka_brokers=$(echo $kafka_brokers | sed 's/;/,/g')
 	
-	#es_nodes=$(apt_config_show es nodes)
-	es_nodes="10.88.1.102;10.88.1.103"
+	es_nodes=$(apt_show_app es nodes)
+	#es_nodes="10.88.1.102;10.88.1.103"
 	es_nodes=$(echo $es_nodes | sed 's/;/,/g')
 	es_port=9200
 	
@@ -81,8 +83,12 @@ nodes = '$es_nodes' \
 port = '$es_port'' $CONF_FILE	
 }
 
-APT_HOME=/opt
+function mv_kafka_to_es() {
+	cp "$KAFKA_TO_ES_PKG/kafka_to_es" /etc/init.d/
+} 
+
 init_log
 init_vars
 mv_install_pkg
 conf_file
+mv_kafka_to_es
