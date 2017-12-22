@@ -6,8 +6,9 @@
 #
 . /etc/profile
 
+log=/var/log/es-$(date +'%Y%m%d')
 function start() {
-	su - es -c "exec ${Apthome}/package/${App}/elasticsearch-5.2.2/bin/elasticsearch" &
+	su - es -c "exec ${Apthome}/package/${App}/elasticsearch-5.2.2/bin/elasticsearch 2>$log" &
 	echo $! > ${APT_PID_FILE}/${App}.pid
 }
 
