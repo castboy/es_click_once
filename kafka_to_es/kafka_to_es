@@ -15,7 +15,7 @@ function put_index() {
 	for node in ${es_nodes_array[@]} 
 	do 
 		res=$(curl -XPUT "$node:9200/$es_index" --data-binary @$Apthome/package/es_model 2>/dev/null | sed -n '/.*acknowledged.*true.*shards_acknowledged.*true/p')
-	    if [ "" != "$res" ]
+	        if [ "" != "$res" ]
 		then
 			log "put index ok"
 			return
@@ -28,8 +28,11 @@ function put_index() {
 		if [ $res = $ex_index ]
 		then
 			log "index:$es_index already exist"
+			return
 		else
 			log "put index failed"
+			exit 1
+		fi
 	done
 }
 
