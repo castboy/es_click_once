@@ -13,6 +13,7 @@ function start() {
 	cd ${Apthome}/package/${App}
 	apt_model
 	exec ./apt_kafka_to_es 2>$log &
+	echo $! > ${APT_PID_FILE}/${App}.pid
 }
 
 function stop() {
