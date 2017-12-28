@@ -1,10 +1,18 @@
 #/bin/bash
 
+#
+# chkconfig: 23456 91 91
+# description: KAFKA_TO_ES 
+# processname: kafka_to_es
+#
+
+log=/var/log/kafka_to_es-$(date +'%Y%m%d')
+
 function start() {
 	echo $$ > ${APT_PID_FILE}/${App}.pid
 	cd ${Apthome}/package/${App}
 	apt_model
-	exec ./apt_kafka_to_es	
+	exec ./apt_kafka_to_es 2>$log &
 }
 
 function stop() {
@@ -37,8 +45,8 @@ function put_index() {
 }
 
 function get_es_nodes() {
-	#es_nodes= ./get es_node
-	es_nodes="10.88.1.102;10.88.1.103"
+	es_nodes=$(apt_show_app es nodes)
+	#es_nodes="10.88.1.102;10.88.1.103"
 	if [ -z es_nodes ]
 	then
 		log "get es-nodes failed!"
@@ -96,8 +104,7 @@ function log_file() {
 
 log_file
 es_index=apt
-#Apthome=${APT_HOME}
-Apthome=/opt
+Apthome=${APT_HOME}
 App="kafka_to_es"
 case $1 in
 	"start")
