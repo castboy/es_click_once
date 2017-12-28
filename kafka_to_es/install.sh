@@ -5,7 +5,7 @@ MYDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 function init_log() {
     LOG_DIR="${MYDIR}/install_log"
 
-    if [ -z $(ls | sed -n '/install_log/p') ]
+    if [ -z $(ls ${MYDIR} | sed -n '/install_log/p') ]
     then
         mkdir $LOG_DIR
     fi
@@ -48,7 +48,7 @@ function mv_install_pkg() {
 	fi
 	
 	mkdir $KAFKA_TO_ES_PKG
-	cp ./kafka_to_es.tgz $KAFKA_TO_ES_PKG -r
+	cp ${MYDIR}/kafka_to_es.tgz $KAFKA_TO_ES_PKG -r
 	cd $KAFKA_TO_ES_PKG
 	tar xzvf kafka_to_es.tgz 1>/dev/null
         rm kafka_to_es.tgz -f
@@ -84,7 +84,7 @@ port = '$es_port'' $CONF_FILE
 }
 
 function mv_kafka_to_es() {
-	cp "$KAFKA_TO_ES_PKG/kafka_to_es" /etc/init.d/
+	cp "$KAFKA_TO_ES_PKG/kafka_to_es" ${APT_INITD}
 } 
 
 init_log
