@@ -1,10 +1,19 @@
 #/bin/bash
 
+#
+# chkconfig: 23456 91 91
+# description: KAFKA_TO_ES 
+# processname: kafka_to_es
+#
+
+log=/var/log/kafka_to_es-$(date +'%Y%m%d')
+
 function start() {
 	echo $$ > ${APT_PID_FILE}/${App}.pid
 	cd ${Apthome}/package/${App}
 	apt_model
-	exec ./apt_kafka_to_es	
+	exec ./apt_kafka_to_es 2>$log &
+	echo $! > ${APT_PID_FILE}/${App}.pid
 }
 
 function stop() {
@@ -14,7 +23,8 @@ function stop() {
 function put_index() {	
 	for node in ${es_nodes_array[@]} 
 	do 
-		res=$(curl -XPUT "$node:9200/$es_index" --data-binary @$Apthome/package/es_model 2>/dev/null | sed -n '/.*acknowledged.*true.*shards_acknowledged.*true/p')
+		echo $node
+		res=$(curl -XPUT "$node:9200/$es_index" --data-binary @es_model 2>/dev/null | sed -n '/.*acknowledged.*true.*shards_acknowledged.*true/p')
 	        if [ "" != "$res" ]
 		then
 			log "put index ok"
@@ -25,7 +35,7 @@ function put_index() {
         for node in ${es_nodes_array[@]}
 	do
 		res=$(curl "$node:9200/_cat/indices" 2>/dev/null | awk '{print $3}')	
-		if [ $res = $ex_index ]
+		if [ $res = $es_index ]
 		then
 			log "index:$es_index already exist"
 			return
@@ -37,8 +47,8 @@ function put_index() {
 }
 
 function get_es_nodes() {
-	#es_nodes= ./get es_node
-	es_nodes="10.88.1.102;10.88.1.103"
+	es_nodes=$(apt_show_app es nodes)
+	#es_nodes="10.88.1.102;10.88.1.103"
 	if [ -z es_nodes ]
 	then
 		log "get es-nodes failed!"
@@ -58,7 +68,7 @@ function get_es_nodes() {
 function index_exist() {
 	for node in ${es_nodes_array[@]}
 	do
-		res=$(curl "node:9200/_cat/indices" 2>/dev/null | sed -n '/apt/p')
+		res=$(curl "$node:9200/_cat/indices" 2>/dev/null | sed -n '/apt/p')
 		if [ "" != "$res" ]
 		then			
 			echo true
@@ -86,18 +96,20 @@ function log() {
 }
 
 function log_file() {
-	if [ -z $(ls "$(pwd)" | sed -n '/log/p') ]
+	KAFKA_TO_ES_HOME="$APT_HOME/package/kafka_to_es"
+	if [ -d "$KAFKA_TO_ES_HOME/log" ]
 	then
-		mkdir "$(pwd)/log/start" -p
+		echo ""
+	else
+		mkdir "$KAFKA_TO_ES_HOME/log/start" -p
 	fi
 
-	START_LOG="$(pwd)/log/start/start-$(date "+%G-%m-%d_%H:%M:%S").log"
+	START_LOG="$KAFKA_TO_ES_HOME/log/start/start-$(date "+%G-%m-%d_%H:%M:%S").log"
 }
 
 log_file
 es_index=apt
-#Apthome=${APT_HOME}
-Apthome=/opt
+Apthome=${APT_HOME}
 App="kafka_to_es"
 case $1 in
 	"start")

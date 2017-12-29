@@ -1,0 +1,3 @@
+2017-12-21 10:27:16: INF   detail: get env_var APT_HOME success
+2017-12-21 10:27:16: INF   detail: rm kafka_to_es in dest dir
+2017-12-21 10:27:16: INF   detail: put kafka_to_es pkg in dest dir

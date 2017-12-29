@@ -1,0 +1,6 @@
+kafka_to_es.tgz  include:
+
+es_modle 
+conf/ 
+kafka_to_es 
+apt_kafka_to_es(main-exe, absent)
