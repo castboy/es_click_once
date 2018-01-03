@@ -66,7 +66,7 @@ function add_user_es() {
 function es_config_file() {
 	hostNode=$(env_var "${THIS_HOST}" "get env_var THIS_HOST")
 	allNodes=$(env_var "$(apt_show_app es nodes)" "get all es nodes")
-        allNodes=$(echo $allNodes | sed 's/;/,/g')
+	allNodes=$(echo $allNodes | sed 's/;/,/g')
 	#hostNode=10.88.1.102
 	#allNodes=10.88.1.102,10.88.1.103,10.88.1.105
 	${APT_HOME}/package/es/es_yml -esDataLog=$ES_DATA_LOG -hostNode=$hostNode -allNodes=$allNodes 
