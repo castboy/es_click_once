@@ -73,6 +73,10 @@ function es_config_file() {
 	mv elasticsearch.yml $ES_CONFIG -f	
 }
 
+function jvm_config() {
+        sed -i 's/-Xms2g/-Xms20g/' ${ES_PKG}/elasticsearch-5.2.2/config/jvm.options
+        sed -i 's/-Xmx2g/-Xmx20g/' ${ES_PKG}/elasticsearch-5.2.2/config/jvm.options
+}
 
 function max_num_of_threads() {
 	if [ -z "$(cat /etc/security/limits.conf | sed -n '/es soft nproc 4096/p')" ]
@@ -172,6 +176,7 @@ mv_install_pkg
 insure_java8
 add_user_es
 es_config_file
+jvm_config
 max_num_of_threads
 max_virtu_mem
 max_file_descs
