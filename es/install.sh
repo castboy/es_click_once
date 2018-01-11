@@ -118,8 +118,8 @@ function max_file_descs() {
 function mem_lock() {
 	if [ -z "$(nl /etc/security/limits.conf | sed -n '/es soft memlock unlimited/p')" ]
 	then
-		sed -i '$a es soft memlock unlimited\ 
-                   es hard memlock unlimited' /etc/security/limits.conf
+		echo 'es soft memlock unlimited' >> /etc/security/limits.conf
+        echo 'es hard memlock unlimited' >> /etc/security/limits.conf
 		sed -i 's/^[" "]*//' /etc/security/limits.conf
 		log "set memory locking"
 	else
