@@ -23,6 +23,7 @@ const (
 	ADRN         = true
 	BSCF         = false
 	AACI         = false
+	MEMLOCK      = true
 )
 
 var pathData string
@@ -45,6 +46,7 @@ type EsYml struct {
 	ADRN        bool     `yaml:"action.destructive_requires_name"`
 	BSCF        bool     `yaml:"bootstrap.system_call_filter"`
 	AACI        bool     `yaml:"action.auto_create_index"`
+	MEMLOCK     bool     `yaml:"bootstrap.memory_lock"`
 }
 
 type Yml string
@@ -75,6 +77,7 @@ func yml(allNodes []string, hostNode string) Yml {
 		ADRN:        ADRN,
 		BSCF:        BSCF,
 		AACI:        AACI,
+		MEMLOCK:     MEMLOCK,
 	}
 
 	bytes, err := yaml.Marshal(esYml)
