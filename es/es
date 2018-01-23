@@ -13,8 +13,7 @@ function start() {
 		return 0
 	fi
 	su - es -c "exec ${Apthome}/package/${App}/elasticsearch-5.2.2/bin/elasticsearch" 2>$log &
-        local pid=$(ps aux | grep /bin/elasticsearch | grep -v grep | awk '{print $2}')
-	echo ${pid} > ${APT_PID_FILE}/${App}.pid
+	echo $! > ${APT_PID_FILE}/${App}.pid
 }
 
 function stop() {
