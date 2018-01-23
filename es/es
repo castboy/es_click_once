@@ -8,8 +8,12 @@
 
 log=/var/log/es-$(date +'%Y%m%d')
 function start() {
+	local pid=$(ps aux | grep java | grep elasticsearch | awk '{print $2}')	
+	if [ -n "$pid" ];then
+		return 0
+	fi
 	su - es -c "exec ${Apthome}/package/${App}/elasticsearch-5.2.2/bin/elasticsearch" 2>$log &
-	echo $! > ${APT_PID_FILE}/${App}.pid
+	echo ${pid} > ${APT_PID_FILE}/${App}.pid
 }
 
 function stop() {

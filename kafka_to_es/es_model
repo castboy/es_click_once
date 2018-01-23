@@ -28,7 +28,7 @@
                     "copy_to": "MyAlert"
                 },
                 "Local_platfrom": {
-                    "type": "text",
+                    "type": "keyword",
                     "copy_to": "MyAlert"
                 },
                 "Local_vtype": {
@@ -1770,6 +1770,10 @@
                                             "type": "text",
                                             "copy_to": "MyXdr"
                                         },
+										"ReqCont": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},
                                         "Offset": {
                                             "type": "integer",
                                             "copy_to": "MyXdr"
@@ -1794,6 +1798,10 @@
                                             "type": "text",
                                             "copy_to": "MyXdr"
                                         },
+										"ResCont": {
+											"type": "text",
+											"copy_to": "MyXdr"
+										},										
                                         "Offset": {
                                             "type": "integer",
                                             "copy_to": "MyXdr"
